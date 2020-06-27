@@ -5,6 +5,7 @@ import { getLeads, deleteLead } from '../../actions/leads';
 import { getDiscussions } from '../../actions/discussions';
 import { getPosts } from '../../actions/posts';
 import { getUser, fetchToken } from '../../actions/user';
+import { getCourses } from '../../actions/courses';
 
 
 export class Leads extends Component {
@@ -25,14 +26,15 @@ export class Leads extends Component {
       this.props.getDiscussions();
       this.props.getPosts();
       this.props.getUser();
+      this.props.getCourses();
    
   }
 
   render() {
     return (
       <Fragment>
-        <h2>Leads</h2>
-        <table className="table table-striped">
+        
+        {/* <table className="table table-striped">
           <thead>
             <tr>
               <th>ID</th>
@@ -61,7 +63,7 @@ export class Leads extends Component {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
       </Fragment>
     );
   }
@@ -72,5 +74,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-   getLeads,getDiscussions,getPosts, getUser, deleteLead,fetchToken
+   getLeads,getDiscussions,getPosts, getUser, deleteLead,fetchToken,getCourses
    })(Leads);

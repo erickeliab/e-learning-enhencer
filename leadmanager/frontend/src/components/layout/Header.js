@@ -51,8 +51,9 @@ export class Header extends Component {
      
     );
 
+
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container collapse navbar-collapse">
           <button
             className="navbar-toggler"

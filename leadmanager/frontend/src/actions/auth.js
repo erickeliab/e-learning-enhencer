@@ -129,18 +129,51 @@ export  const discussions_row = JSON.stringify({
   forumid : 1,
   });
 
+export const courses_row = JSON.stringify(
+  {
+      "userlist": [{
+          "userid": 4,
+          "courseid" : 1
+
+      } ]
+          });
+
 
 // Setup config with token - helper function
+
+
+
+  export const tokenConfigCourses = (getState) => {
+    // Get token from state
+    const token = getState().user.token_value;
+  
+   // Request Body
+    const tk = 'b629eb6c7d6e3f34b50b199217a05559';
+    const tk2 = 'b629eb6c7d6e3f34b50b199217a05559';
+  
+    //if (!token) console.log('token not found');
+    // Headers
+    const config = {
+     
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'b629eb6c7d6e3f34b50b199217a05559',
+        }
+     
+    };
+
+  // If token, add to headers config
+  // if (token) {
+  //   config.headers['Authorization'] = `Token ${token}`;
+  // }
+
+  return config;
+};
+
 export const tokenConfigElearning = (getState) => {
-  // Get token from state
-  const token = getState().user.token_value;
 
- // Request Body
-  const tk = 'b629eb6c7d6e3f34b50b199217a05559';
-  const tk2 = 'b629eb6c7d6e3f34b50b199217a05559';
 
-  if (!token) console.log('token not found');
-  // Headers
   const config = {
    
       headers: {
@@ -149,12 +182,6 @@ export const tokenConfigElearning = (getState) => {
         'Authorization': '51a719c9803f1afffe4f86f4af0a9cf5',
       }
    
-  };
-
-  // If token, add to headers config
-  // if (token) {
-  //   config.headers['Authorization'] = `Token ${token}`;
-  // }
-
+  }
   return config;
 };

@@ -7,15 +7,7 @@ const Section = () => (
     // jsx
 <Fragment>
 <Hero />
-<div className="container col-12 col-md-12 col-lg-12 row">
-        
-        <div className="container col-md-9 col-lg-9">
-            <Courselist /> 
-        </div>
-        <div className="container col-md-3 col-lg-3 ">
-            <Linklist />
-        </div>
-    </div>
+<Courselist />
 </Fragment>
     
 );

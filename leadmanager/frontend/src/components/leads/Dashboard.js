@@ -5,8 +5,10 @@ import Leads from './Leads';
 export default function Dashboard() {
   return (
     <Fragment>
-      <Form />
       <Leads />
+      <div className="container">
+        <h1>Home</h1>
+      </div>
     </Fragment>
   );
 }

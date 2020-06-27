@@ -16,4 +16,5 @@ export const GET_DISCUSSIONS = 'GET_DISCUSSIONS';
 export const GET_POSTS = 'GET_POSTS';
 export const GET_USER = 'GET_USER';
 export const GET_USER_TOKEN = 'GET_USER_TOKEN';
-export const GET_USER_TOKEN_FAIL = 'GET_USER_TOKEN_FAIL'
+export const GET_USER_TOKEN_FAIL = 'GET_USER_TOKEN_FAIL';
+export const GET_COURSES = 'GET_COURSES';

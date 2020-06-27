@@ -1,10 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getPosts } from '../../actions/posts';
+import {getDiscussions} from '../../actions/discussions';
+import Lead from '../../components/leads/Leads';
 
-export default class Hero extends Component {
+export  class Hero extends Component {
+
+    componentWillMount(){
+      this.props.getPosts()
+    }
+
     render() {
         return (
-            <div className="card bg-dark  d-block h-40">
+          <Fragment>
+            <Lead />
+
+            <div className="card bg-light  d-block h-40">
 <div class="card-body">
             <h4>Dashboard</h4>
             <div class="row">
@@ -38,32 +50,21 @@ export default class Hero extends Component {
                   </Link>
                 </div>
               </div>
-              <div class="col-7 col-sm-9">
-                hhhhhhhhh
-                <div class="tab-content" id="vert-tabs-tabContent">
-                  <div class="tab-pane text-left fade" id="vert-tabs-home" role="tabpanel" aria-labelledby="vert-tabs-home-tab">
+              <div class="container row col-7 col-sm-9">
+              <div class="info-box mb-4 bg-success m-2">
+             
+             
+            </div>
 
+            
 
-
-                  </div>
-                  <div class="tab-pane fade active show" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab">
-
-
-                  </div>
-                  <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel" aria-labelledby="vert-tabs-messages-tab">
-
-
-                  </div>
-                  <div class="tab-pane fade" id="vert-tabs-settings" role="tabpanel" aria-labelledby="vert-tabs-settings-tab">
-
-
-                  </div>
-                </div>
               </div>
             </div>
             </div>
 
               </div>
+          </Fragment>
+          
         )
     }
 
@@ -72,3 +73,9 @@ export default class Hero extends Component {
         
     }
 }
+
+const mapStateToProps = (state) => ({
+  
+});
+
+export default connect(mapStateToProps, { getPosts, getDiscussions})(Hero);

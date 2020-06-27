@@ -8,7 +8,7 @@ import { GET_POSTS } from './types';
 export const getPosts = () => (dispatch, getState) => {
 
     const posts_row = JSON.stringify({ 
-        "discussionid" : 1,
+        "discussionid" : 2,
         });
 
     let url = `http://localhost/moodle/webservice/restful/server.php/mod_forum_get_discussion_posts`;
