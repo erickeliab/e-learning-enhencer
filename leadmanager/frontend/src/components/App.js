@@ -50,12 +50,12 @@ class App extends Component {
                   <Route exact path="/" component={Dashboard} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
-                  <Route exact path="/courses" component={Section} />
-                  <Route exact path="/profile" component={Profile} />
-                  <Route exact path="/editprofile" component={EditProfile} />
-                  <Route exact path="/about" component={About} />
-                  <Route exact path="/settings" component={Settings} />
-                  <Route exact path="/discussions" component={Discussions} />
+                  <PrivateRoute exact path="/courses" component={Section} />
+                  <PrivateRoute exact path="/profile" component={Profile} />
+                  <PrivateRoute exact path="/editprofile" component={EditProfile} />
+                  <PrivateRoute exact path="/about" component={About} />
+                  <PrivateRoute exact path="/settings" component={Settings} />
+                  <PrivateRoute exact path="/discussions" component={Discussions} />
                 </Switch>
               </div>
             </Fragment>

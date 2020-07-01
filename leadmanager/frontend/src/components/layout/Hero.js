@@ -16,7 +16,7 @@ export  class Hero extends Component {
           <Fragment>
             <Lead />
 
-            <div className="card bg-light  d-block h-40">
+            <div className="card bg-light  d-block h-10">
 <div class="card-body">
             <h4>Dashboard</h4>
             <div class="row">
@@ -50,14 +50,24 @@ export  class Hero extends Component {
                   </Link>
                 </div>
               </div>
-              <div class="container row col-7 col-sm-9">
-              <div class="info-box mb-4 bg-success m-2">
-             
-             
-            </div>
+              <div class="container bg-primary row col-7 col-sm-9 border-primary rounded-3 p-3">
+             <div className="container bg-white ">
 
+             <center>
+              <h2>Announcement</h2>
+            </center>
+            <p>
+             orem Ipsum is simply dummy text of the printing and typesetting industry.
+                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                  when an unknown printer took a galley of type and scrambled it to make a type 
+                  specimen book. It has survived not only five centuries, but also the leap into
+                   electronic typesetting, remaining essentially unchanged. It was popularised in
+                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                    and more recently with desktop publishing software like Aldus PageMaker including 
+                    versions of Lorem Ipsum.
+            </p>
+             </div>
             
-
               </div>
             </div>
             </div>

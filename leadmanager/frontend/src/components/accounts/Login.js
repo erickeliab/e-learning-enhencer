@@ -3,6 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import { getUser, fetchToken } from '../../actions/user';
+
 
 export class Login extends Component {
   state = {
@@ -18,6 +20,8 @@ export class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.login(this.state.username, this.state.password);
+    this.props.fetchToken('blockresna','Mu12345678.');
+    this.props.getUser();
   };
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -73,4 +77,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, getUser,fetchToken })(Login);

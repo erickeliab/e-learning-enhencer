@@ -1,10 +1,11 @@
 import { GET_USER } from '../actions/types';
-import { GET_USER_TOKEN, GET_USER_TOKEN_FAIL } from '../actions/types';
+import { GET_USER_TOKEN, GET_USER_TOKEN_FAIL,GET_STUDENT } from '../actions/types';
 
 const initialState = {
     users: [],
     token_value : '',
-    token_status : ""
+    token_status : "",
+    students : []
   };
   
   export default function (state = initialState, action) {
@@ -25,6 +26,11 @@ const initialState = {
             ...state,
             token_status: 'Not fetched'
         };
+        case GET_STUDENT:
+            return {
+              ...state,
+              students: action.payload.students
+            }
       
       default:
         return state;

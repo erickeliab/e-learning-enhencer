@@ -18,3 +18,4 @@ export const GET_USER = 'GET_USER';
 export const GET_USER_TOKEN = 'GET_USER_TOKEN';
 export const GET_USER_TOKEN_FAIL = 'GET_USER_TOKEN_FAIL';
 export const GET_COURSES = 'GET_COURSES';
+export const GET_STUDENT = 'GET_STUDENT'; 

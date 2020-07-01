@@ -20,13 +20,14 @@ export class Header extends Component {
 
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <span className="navbar-text mr-3">
-          <strong>{user ? `Welcome ${user.username}` : ''}</strong>
+          <strong>{user ? ` ${user.username}` : ''}</strong>
         </span>
         <li className="nav-item">
           <button onClick={this.props.logout} className="nav-link btn btn-info btn-sm text-light">
             Logout
           </button>
         </li>
+       
       </ul>
       </Fragment>
     );
@@ -53,27 +54,19 @@ export class Header extends Component {
 
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
-        <div className="container collapse navbar-collapse">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a className="navbar-brand" href="#">
-              E-Learning Enhencer
-            </a>
-          </div>
-          {isAuthenticated ? authLinks : guestLinks}
-        </div>
+
+      <Fragment>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">E-learning Enhencer</a>
+     
+        {isAuthenticated ? authLinks : guestLinks}
+       
+
+       
       </nav>
+
+
+     </Fragment>
     );
   }
 }

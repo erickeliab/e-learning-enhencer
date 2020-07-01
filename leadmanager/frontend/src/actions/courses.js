@@ -7,9 +7,9 @@ import {    GET_COURSES } from './types';
 // GET DISCUSSIONS
 export const getCourses = () => (dispatch, getState) => {
 
-    let url = `http://localhost/moodle/webservice/restful/server.php/core_user_get_course_user_profiles`;
+   let url = `http://localhost/moodle/webservice/restful/server.php/core_user_get_course_user_profiles`;
   axios
-    .post(url, courses_row, tokenConfigCourses(getState))
+    .post(url, courses_row(getState), tokenConfigCourses(getState))
     .then((res) => {
       dispatch({
         type: GET_COURSES,

@@ -10,6 +10,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  GET_STUDENT
 } from './types';
 
 // CHECK TOKEN & LOAD USER
@@ -52,6 +53,14 @@ export const login = (username, password) => (dispatch) => {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
+      axios.get('api/students',config)
+      .then((res) => {
+        dispatch({
+          type: GET_STUDENT,
+          payload: res.data
+        })
+      })
+      .catch((err) => console.log(err));
     })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
@@ -80,6 +89,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
+      
     })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
@@ -126,17 +136,30 @@ export const tokenConfig = (getState) => {
 
 
 export  const discussions_row = JSON.stringify({ 
-  forumid : 1,
+  forumid : [1],
   });
 
-export const courses_row = JSON.stringify(
-  {
-      "userlist": [{
-          "userid": 4,
-          "courseid" : 1
+export const courses_row = (getState) => {
 
-      } ]
-          });
+  // const user_id = getState().user;
+  // if(typeof (getState().user.users[0]) == 'undefined'){
+  // console.log('123');
+
+  // }else {
+  //   console.log(getState().user.users[0].id);
+
+  // }
+  
+  //return user_id;
+  return JSON.stringify(
+    {
+        "userlist": [{
+            "userid": 3,
+            "courseid" : 1
+  
+        } ]
+            });
+}
 
 
 // Setup config with token - helper function
