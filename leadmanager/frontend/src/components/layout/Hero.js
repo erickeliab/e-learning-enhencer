@@ -34,12 +34,7 @@ export  class Hero extends Component {
 
                   </Link>
 
-                  <Link to="/discussions">
-
-
-                  <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab" aria-controls="vert-tabs-messages" aria-selected="false">Discussions</a>
-
-                  </Link>
+              
                   <Link to="/settings">
 
                   <a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">Settings</a>
@@ -48,27 +43,26 @@ export  class Hero extends Component {
 
                    <Link to="/about">
 
-                  <a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">About</a>
+                  <a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">Help</a>
 
                   </Link>
                 </div>
               </div>
-              <div class="container bg-primary row col-7 col-sm-9 border-primary rounded-3 p-3">
+              <div class="container bg-white row col-7 col-sm-9  rounded-3 p-3">
              <div className="container bg-white ">
 
              <center>
-              <h2>Announcement</h2>
+             
             </center>
-            <p>
-             orem Ipsum is simply dummy text of the printing and typesetting industry.
-                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                  when an unknown printer took a galley of type and scrambled it to make a type 
-                  specimen book. It has survived not only five centuries, but also the leap into
-                   electronic typesetting, remaining essentially unchanged. It was popularised in
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                    and more recently with desktop publishing software like Aldus PageMaker including 
-                    versions of Lorem Ipsum.
-            </p>
+          
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Announcement</h3>
+              </div>
+              <div class="card-body">
+                <p>No Any announcement</p>
+                </div>
+            </div>
              </div>
             
               </div>

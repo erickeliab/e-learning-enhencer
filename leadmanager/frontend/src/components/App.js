@@ -18,7 +18,7 @@ import EditProfile from './profile/editprofile';
 import PrivateRoute from './common/PrivateRoute';
 import About from './pages/about';
 import Settings from './pages/settings';
-
+import Footer from './layout/footer';
 import { Provider } from 'react-redux';
 import store from '../store';
 import { loadUser } from '../actions/auth';
@@ -64,6 +64,7 @@ class App extends Component {
                   <PrivateRoute exact path="/forums/:id" component={DiscussionList} />
                 </Switch>
               </div>
+              <Footer />
             </Fragment>
           </Router>
         </AlertProvider>
