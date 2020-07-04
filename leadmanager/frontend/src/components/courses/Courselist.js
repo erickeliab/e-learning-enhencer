@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import CourseItem from './CourseItem';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getCourses } from '../../actions/courses';
+import { Link } from 'react-router-dom';
 
 
 export class Courselist extends Component {
+
+    // componentDidMount(){
+    //     this.props.getCourses(this.props.fetchedtoken,this.props.userid ? this.props.userid:0)
+    // }
+
   
     render() {
+        this.props.userid ? this.props.getCourses(this.props.fetchedtoken,this.props.userid ? this.props.userid:0) : console.log('none');
+
         const {courses} = this.props.courses;
 
-        courses ? console.log(courses) : console.log('none');
+       // this.props.userid ? console.log(this.props.userid) : console.log('none');
         
         
         return (
@@ -31,7 +40,10 @@ export class Courselist extends Component {
             </div>
         </div>
         <div class="card-footer">
-            <button class="btn btn-info btn-sm">More</button>
+            <Link to={"/courses/"+course.id}>
+            <button class="btn btn-info btn-sm">Forums</button>
+            </Link>
+            
         </div>
     </div>
 </div>
@@ -45,7 +57,9 @@ export class Courselist extends Component {
 }
 
 const mapStateToProps = (state) => ({
-courses : state.courses
+courses : state.courses,
+fetchedtoken: state.user.users.token_value,
+userid : state.user.users.userid
 });
 
-export default connect(mapStateToProps)(Courselist)
+export default connect(mapStateToProps, {getCourses})(Courselist)

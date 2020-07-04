@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import {Link } from 'react-router-dom';
+import {Link , Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getPosts } from '../../actions/posts';
 import {getDiscussions} from '../../actions/discussions';
@@ -12,12 +12,15 @@ export  class Hero extends Component {
     }
 
     render() {
+      if (this.props.tokenfetched == "") {
+        return <Redirect to="/entry" />;
+      }
         return (
           <Fragment>
             <Lead />
 
             <div className="card bg-light  d-block h-10">
-<div class="card-body">
+      <div class="card-body">
             <h4>Dashboard</h4>
             <div class="row">
               <div class="col-5 col-sm-3">
@@ -85,7 +88,7 @@ export  class Hero extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  
+  tokenfetched : state.user.token_value
 });
 
 export default connect(mapStateToProps, { getPosts, getDiscussions})(Hero);

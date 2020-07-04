@@ -6,9 +6,10 @@ import { getDiscussions } from '../../actions/discussions';
 import { getPosts } from '../../actions/posts';
 import { getUser, fetchToken } from '../../actions/user';
 import Post from '../../components/posts/posts';
+import { Link } from 'react-router-dom';
 
 
-export  class Discussions extends Component {
+export  class DiscussionList extends Component {
 
     static propTypes = {
         discussions: PropTypes.array.isRequired,
@@ -25,49 +26,55 @@ export  class Discussions extends Component {
 
     componentDidMount(){
        // this.props.getDiscussions(this.props.match.params.id);
-       this.props.getPosts(this.props.match.params.id);
+        
     }
 
     render = () => {
-      if (this.props.discussions){
-        //  const { discussion } = this.props.discussions ? this.props.discussions.filter((post) => post.discussionid == 1);
-        const discussion = this.props.discussions.discussions.filter((disc) => disc.id == 1);
-        
-        console.log(discussion);
-        
-      }
-      // const { discussion } = this.props.discussions;
-//
+
         //console.log( this.props.posts.filter((post) => post.discussionid == 1));
-       
+        this.props.getDiscussions(this.props.match.params.id);
         return <Fragment>
             <Hero />
             <div className="container row col-md-12">
-            <div class="col-md-12 m-0">
+           
+                <div className="col-md-2 ">
+                
+                <ul class="list-group mb-4">
+                <li class="list-group-item active">Discussions</li>
+                {this.props.discussions.discussions ? this.props.discussions.discussions.map((discussion) => (
+
+                <li class="list-group-item">{discussion.name}</li>
+                )): null}
+               
+                </ul>
+                </div>
+                <div className="col-md-10 col-12">
+
+                {this.props.discussions.discussions ? this.props.discussions.discussions.map((discussion) => (
+
+                <div class="col-md-12 m-0">
             <div class="card card-default">
               <div class="card-header">
-                
-                
-                {this.props.discussions ? 
                 <h3 class="card-title">
-                {this.props.discussions.discussions.filter((disc) => disc.id == this.props.match.params.id)[0].name}
-                </h3>
-                : null}
                 
+                {discussion.name}
+                </h3>
               </div>
-              <div class="card-body">
-              {this.props.posts ? this.props.posts.map((pst) => (
-
-                <div class="callout callout-success">
-                  <h5>##</h5>
-
-                  <p><Post pst = {pst}/></p>
-                </div>
-                )) : null}
-              </div>
+              <Link to={"/discussions/"+discussion.id}>
+                <button class="btn btn-info btn-sm">Open</button>
+            </Link>
             </div>
+
+
         
           </div>
+           )): null}
+       
+       
+
+               
+
+                </div>
             </div>
          
            
@@ -82,4 +89,4 @@ const mapStateToProps = (state) => ({
     posts : state.posts.posts.posts,
 })
 
-export default connect(mapStateToProps,{getDiscussions,fetchToken, getPosts})(Discussions);
+export default connect(mapStateToProps,{getDiscussions,fetchToken, getPosts})(DiscussionList);

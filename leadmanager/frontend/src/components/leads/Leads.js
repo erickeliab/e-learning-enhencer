@@ -17,16 +17,16 @@ export class Leads extends Component {
   };
   
   componentWillMount(){
-    this.props.fetchToken('blockresna','Mu12345678.');
+   // this.props.fetchToken('blockresna','Mu12345678.');
 
   }
 
   componentDidMount() {
-     this.props.getLeads();
-      this.props.getDiscussions();
-      this.props.getPosts();
-      this.props.getUser();
-      this.props.getCourses();
+     //this.props.getLeads();
+      // this.props.getDiscussions();
+      // this.props.getPosts();
+       this.props.getUser(this.props.tokenfetched);
+      // this.props.getCourses();
    
   }
 
@@ -71,6 +71,7 @@ export class Leads extends Component {
 
 const mapStateToProps = (state) => ({
   leads: state.leads.leads,
+  tokenfetched : state.user.token_value
 });
 
 export default connect(mapStateToProps, {

@@ -5,21 +5,43 @@ import { tokenConfigElearning, discussions_row } from './auth';
 
 
 // GET DISCUSSIONS
-export const getUser = () => (dispatch, getState) => {
+export const getUser = (tokene) => (dispatch, getState) => {
 
-    const users_row = JSON.stringify({ 
+    const users_row = JSON.stringify({
+      "serviceshortnames":[
+              "students_api"
+      ]
+});
+
+  const tokenConfigElearn = (token) => {
+
+
+          const config = {
+           
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+               
+              }
+           
+          }
+                  if (token) {
+          config.headers['Authorization'] = `${token}`;
+        }
+          return config;
+        };
+        console.log(tokene);
         
-        criteria:[]
-        });
-
-    let url = `http://localhost/moodle/webservice/restful/server.php/core_user_get_users`;
+    let url = `http://localhost/moodle/webservice/restful/server.php/core_webservice_get_site_info`;
   axios
-    .post(url, users_row, tokenConfigElearning(getState))
+    .post(url, users_row, tokenConfigElearn(tokene))
     .then((res) => {
       dispatch({
         type: GET_USER,
         payload: res.data,
       });
+      console.log(res.data);
+      
     })
     .catch((err) => console.log('failed to get users token from e-learning'));
 

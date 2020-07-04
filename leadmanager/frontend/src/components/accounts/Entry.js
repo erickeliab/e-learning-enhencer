@@ -6,7 +6,7 @@ import { login } from '../../actions/auth';
 import { getUser, fetchToken } from '../../actions/user';
 
 
-export class Login extends Component {
+export class Entry extends Component {
   state = {
     username: '',
     password: '',
@@ -19,22 +19,22 @@ export class Login extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.login(this.state.username, this.state.password);
-    //this.props.fetchToken('blockresna','Mu12345678.');
+    //this.props.login(this.state.username, this.state.password);
+    this.props.fetchToken(this.state.username, this.state.password);
     //this.props.getUser();
   };
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    if (this.props.isAuthenticated) {
-      return <Redirect to="/courses" />;
-    }
+    if (!this.props.tokenfetched == "") {
+        return <Redirect to="/courses" />;
+      }
     const { username, password } = this.state;
     return (
       <div className="col-md-6 m-auto">
         <div className="card card-body mt-5">
-          <h2 className="text-center">Login</h2>
+          <h2 className="text-center">Provide Elearning Credentials</h2>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label>Username</label>
@@ -60,11 +60,11 @@ export class Login extends Component {
 
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
-                Login
+                Send
               </button>
             </div>
             <p>
-              Don't have an account? <Link to="/register">Register</Link>
+             {/* Don't have an account? <Link to="/register">Register</Link> */}
             </p>
           </form>
         </div>
@@ -75,6 +75,7 @@ export class Login extends Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  tokenfetched : state.user.token_value
 });
 
-export default connect(mapStateToProps, { login, getUser,fetchToken })(Login);
+export default connect(mapStateToProps, { login, getUser,fetchToken })(Entry);

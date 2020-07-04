@@ -52,16 +52,7 @@ export const login = (username, password) => (dispatch) => {
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
-      });
-      axios.get('api/students',config)
-      .then((res) => {
-        dispatch({
-          type: GET_STUDENT,
-          payload: res.data
-        })
-      })
-      .catch((err) => console.log(err));
-    })
+      }) })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
@@ -135,9 +126,10 @@ export const tokenConfig = (getState) => {
 };
 
 
-export  const discussions_row = JSON.stringify({ 
-  forumid : [1],
+export  const discussions_row = (id) =>  JSON.stringify({ 
+  forumid : 1,
   });
+
 
 export const courses_row = (getState) => {
 

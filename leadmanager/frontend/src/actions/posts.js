@@ -5,15 +5,15 @@ import { tokenConfigElearning, discussions_row } from './auth';
 import { GET_POSTS } from './types';
 
 // GET DISCUSSIONS
-export const getPosts = () => (dispatch, getState) => {
+export const getPosts = (id) => (dispatch, getState) => {
 
-    const posts_row = JSON.stringify({ 
-        "discussionid" : 2,
+    const posts_row = (id) => JSON.stringify({ 
+        "discussionid" : id,
         });
 
     let url = `http://localhost/moodle/webservice/restful/server.php/mod_forum_get_discussion_posts`;
   axios
-    .post(url, posts_row, tokenConfigElearning(getState))
+    .post(url, posts_row(id), tokenConfigElearning(getState))
     .then((res) => {
       dispatch({
         type: GET_POSTS,

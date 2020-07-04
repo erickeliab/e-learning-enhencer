@@ -14,8 +14,11 @@ export class Profile extends Component{
 
     render () {
        
-        const euser = this.props.euser[0];
+        const euser = this.props.euser;
         const appuser = this.props.auth.user;
+
+        console.log(euser);
+        console.log(appuser);
         return <Fragment>
        {appuser ? console.log(appuser) : console.log('123')}
         <Hero />
@@ -88,7 +91,7 @@ export class Profile extends Component{
                                     <h3>Elearning User Account</h3>
                                 </div>
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_06.jpg" alt="card image" /></p>
+                                    <p><img class=" img-fluid" src={euser.userpictureurl} alt="card image" /></p>
                                     {euser ? 
                            <Link to="/editprofile">
                            <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-md"><i class="fa fa-user"></i></a>    <button className="btn btn-primary btn-sm"> Accessed</button>
@@ -99,16 +102,16 @@ export class Profile extends Component{
                         </Link>} 
 
                         <br /><br />
-                        {appuser ? <h4 class="card-title text-primary">Elearning Username :  {euser.fullname}</h4> : '' }
-                        {appuser ? <h4 class="card-title">Email Adress : {euser.email}</h4> : '' }
+                        {appuser ? <h4 class="card-title text-primary">Elearning Username :  {euser.username}</h4> : '' }
+                        {appuser ? <h4 class="card-title">Full Name : {euser.fullname}</h4> : '' }
                             </div>
                             </div>
                         </div>
                         <div class="backside">
                         <div class="card">
                                 <div class="card-body text-center mt-4">
-                                {euser ? <h4 class="card-title">Elearning Name :  {euser.fullname}</h4> : '' }
-                                {euser ? <h4 class="card-title">Email Adress :  {euser.email}</h4> : '' }
+                                {euser ? <h4 class="card-title">Elearning Username :  {euser.username}</h4> : '' }
+                                {euser ? <h4 class="card-title">Elearning Fullrname :  {euser.fullname}</h4> : '' }
                                 <br />
                                 <center> <h4 className="card-text">Account Description</h4> </center>
                                     <p class="card-text">This account type is the elearning registered account that aims t access the contents related to the courses enrolled from the eleaarning system. To

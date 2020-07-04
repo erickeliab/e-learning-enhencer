@@ -13,7 +13,7 @@ const initialState = {
       case GET_USER:
         return {
           ...state,
-          users: action.payload.users.filter(user => user.email === 'erickemma@gmail.com'),
+          users: action.payload,
         };
         case GET_USER_TOKEN:
         localStorage.setItem('token_value', action.payload.token)

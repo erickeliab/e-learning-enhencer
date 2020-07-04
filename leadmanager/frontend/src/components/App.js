@@ -9,6 +9,7 @@ import Header from './layout/Header';
 import Dashboard from './leads/Dashboard';
 import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
+import Entry from './accounts/Entry';
 import Register from './accounts/Register';
 import Section from './courses/Section';
 import Hero from './layout/Hero';
@@ -22,6 +23,8 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import { loadUser } from '../actions/auth';
 import Discussions from './discussions/discussions';
+import DiscussionList from './discussions/disccussionlist';
+import Forums from "./forums/forumlist";
 
 // Alert Options
 const alertOptions = {
@@ -50,12 +53,15 @@ class App extends Component {
                   <Route exact path="/" component={Dashboard} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
+                  <PrivateRoute exact path="/entry" component={Entry} />
                   <PrivateRoute exact path="/courses" component={Section} />
                   <PrivateRoute exact path="/profile" component={Profile} />
                   <PrivateRoute exact path="/editprofile" component={EditProfile} />
                   <PrivateRoute exact path="/about" component={About} />
                   <PrivateRoute exact path="/settings" component={Settings} />
-                  <PrivateRoute exact path="/discussions" component={Discussions} />
+                  <PrivateRoute exact path="/discussions/:id" component={Discussions} />
+                  <PrivateRoute exact path="/courses/:id" component={Forums} />
+                  <PrivateRoute exact path="/forums/:id" component={DiscussionList} />
                 </Switch>
               </div>
             </Fragment>
