@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import  { changeTheme } from '../../actions/theme';
 
 export class Header extends Component {
   static propTypes = {
@@ -10,9 +11,24 @@ export class Header extends Component {
     logout: PropTypes.func.isRequired,
   };
 
+  changeTheme = (e) => {
+    e.preventDefault();
+    if (this.props.theme == 'light'){
+      this.props.changeTheme('dark')
+    }else {
+      this.props.changeTheme('light')
+    }
+  }
+ 
+
   render() {
     const { isAuthenticated, user } = this.props.auth;
-
+    this.props.parentCallback(
+      {
+        theme : this.props.theme,
+        navtheme : this.props.navtheme
+      }
+    );
     const authLinks = (
       <Fragment>
       
@@ -23,7 +39,7 @@ export class Header extends Component {
           <strong>{user ? ` ${user.username}` : ''}</strong>
         </span>
         <li className="nav-item">
-          <button onClick={this.props.logout} className="nav-link btn btn-info btn-sm text-light">
+          <button onClick={this.props.logout} className="nav-link btn btn-primary btn-md text-light p-2">
             Logout
           </button>
         </li>
@@ -56,12 +72,21 @@ export class Header extends Component {
     return (
 
       <Fragment>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+         {/* <nav className="col-12 bg-primary sticky-top">
+           <small></small>
+       mzumbe university e-learning enhancer application
+      </nav> */}
+      <nav className={`navbar navbar-expand-lg navbar-primary bg-${this.props.navtheme} sticky-top`}>
       <a class="navbar-brand" href="#">E-learning Enhencer</a>
-     
+      <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li className="nav-item theme" onClick={this.changeTheme}>
+       - <i class="fa fa-sun" aria-hidden="true"></i> - 
+        </li>
+        
+      </ul>
+
         {isAuthenticated ? authLinks : guestLinks}
        
-
        
       </nav>
 
@@ -71,8 +96,12 @@ export class Header extends Component {
   }
 }
 
+
+
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  theme: state.theme.theme[0],
+  navtheme: state.theme.theme[1]
 });
 
-export default connect(mapStateToProps, { logout })(Header);
+export default connect(mapStateToProps, { logout, changeTheme })(Header);

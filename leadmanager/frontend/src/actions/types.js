@@ -20,3 +20,4 @@ export const GET_USER_TOKEN_FAIL = 'GET_USER_TOKEN_FAIL';
 export const GET_COURSES = 'GET_COURSES';
 export const GET_STUDENT = 'GET_STUDENT'; 
 export const GET_FORUMS = 'GET_FORUMS';
+export const SET_THEME = 'SET_THEME';

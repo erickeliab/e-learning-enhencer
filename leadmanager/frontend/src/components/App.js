@@ -32,9 +32,16 @@ const alertOptions = {
   position: 'top center',
 };
 
+
+
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
+  }
+
+  state = { }
+  callbackFunction = (childData) => {
+  this.setState(childData)
   }
 
   render() {
@@ -43,11 +50,11 @@ class App extends Component {
         <AlertProvider template={AlertTemplate} {...alertOptions}>
           <Router>
             <Fragment>
-              <Header />
               
-              <Alerts />
              
-              <div className="">
+              <div className={`bg-${this.state.theme}  text-${this.state.navtheme}`}>
+              <Header parentCallback={this.callbackFunction} />
+              <Alerts />
                 <Switch>
                   <PrivateRoute exact path="/leads" component={Dashboard} />
                   <Route exact path="/" component={Dashboard} />
@@ -63,8 +70,8 @@ class App extends Component {
                   <PrivateRoute exact path="/courses/:id" component={Forums} />
                   <PrivateRoute exact path="/forums/:id" component={DiscussionList} />
                 </Switch>
-              </div>
               <Footer />
+              </div>
             </Fragment>
           </Router>
         </AlertProvider>
@@ -72,5 +79,9 @@ class App extends Component {
     );
   }
 }
+
+
+
+
 
 ReactDOM.render(<App />, document.getElementById('app'));

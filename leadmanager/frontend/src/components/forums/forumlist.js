@@ -21,33 +21,37 @@ class Forums extends Component {
 
             <div className="container row col-md-12">
            
-          
-           <div className="col-md-10 col-12">
+          <div class="col-md-3">
+                    <div className="col-md-10 col-12">
 
-           {this.props.forums ? this.props.forums.map((forum) => (
+            {this.props.forums ? this.props.forums.map((forum) => (
 
-           <div class="col-md-12 m-0">
-       <div class="card card-default">
-         <div class="card-header">
-           <h3 class="card-title">
+            <div class="col-md-12 m-0">
+            <div class="card card-default">
+            <div class="card-header">
+            <h3 class="card-title">
+
+            {forum.name} 
            
-           {forum.name}
-           </h3>
-         </div>
-
-         <Link to={"/forums/"+forum.id}>
-            <button class="btn btn-info btn-sm">Discussions</button>
+            <Link to={"/forums/"+forum.id}>
+            <button class="btn btn-info btn-sm mt-3">View Discussions</button>
             </Link>
-       </div>
-   
-     </div>
-      )): null}
-  
-  
+            </h3>
+            </div>
 
-          
+            
+            </div>
 
-           </div>
+            </div>
+            )): null}
+
+
+
+
+
+            </div>
+          </div>
+         
        </div>
             </Fragment>
         )

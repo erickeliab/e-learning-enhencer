@@ -8,6 +8,7 @@ import messages from './messages';
 import user from './user.js'
 import auth from './auth';
 import forums from './forums';
+import theme from './theme';
 
 export default combineReducers({
   leads,
@@ -18,5 +19,6 @@ export default combineReducers({
   posts,
   user,
   courses,
-  forums
+  forums,
+  theme
 });

@@ -48,21 +48,25 @@ export  class DiscussionList extends Component {
                
                 </ul>
                 </div>
-                <div className="col-md-10 col-12">
+                <div className="container row col-md-10">
+                <div className="container col-md-9">
 
                 {this.props.discussions.discussions ? this.props.discussions.discussions.map((discussion) => (
 
-                <div class="col-md-12 m-0">
-            <div class="card card-default">
+                <div class="">
+                <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">
                 
                 {discussion.name}
                 </h3>
+               
+                <Link to={"/discussions/"+discussion.id}>
+
+                <button class="btn btn-primary btn-sm ml-3">Open</button>
+                 </Link>
               </div>
-              <Link to={"/discussions/"+discussion.id}>
-                <button class="btn btn-info btn-sm">Open</button>
-            </Link>
+            
             </div>
 
 
@@ -74,6 +78,7 @@ export  class DiscussionList extends Component {
 
                
 
+                </div>
                 </div>
             </div>
          

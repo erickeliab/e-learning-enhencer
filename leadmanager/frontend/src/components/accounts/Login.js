@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 import { getUser, fetchToken } from '../../actions/user';
+import { Header } from '../../components/layout/Header';
 
 
 export class Login extends Component {
@@ -32,15 +33,18 @@ export class Login extends Component {
     }
     const { username, password } = this.state;
     return (
-      <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5">
+      <Fragment>
+        {/* <Header/> */}
+      
+      <div className= {`col-md-6 mt-0 m-auto bg-${this.props.theme}  text-${this.props.navtheme}`}>
+        <div className= {`card-${this.props.theme} card-body mt-5 bg-${this.props.theme}  text-${this.props.navtheme}`}>
           <h2 className="text-center">Login</h2>
           <form onSubmit={this.onSubmit}>
-            <div className="form-group">
+            <div className="form-group" className={` bg-${this.props.theme}  text-${this.props.navtheme}`}>
               <label>Username</label>
               <input
                 type="text"
-                className="form-control"
+                className={`form-control bg-${this.props.theme}  text-${this.props.navtheme}`}
                 name="username"
                 onChange={this.onChange}
                 value={username}
@@ -51,7 +55,7 @@ export class Login extends Component {
               <label>Password</label>
               <input
                 type="password"
-                className="form-control"
+                className={`form-control bg-${this.props.theme}  text-${this.props.navtheme}`}
                 name="password"
                 onChange={this.onChange}
                 value={password}
@@ -69,12 +73,15 @@ export class Login extends Component {
           </form>
         </div>
       </div>
+      </Fragment>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  theme : state.theme.theme[0],
+  navtheme : state.theme.theme[1]
 });
 
 export default connect(mapStateToProps, { login, getUser,fetchToken })(Login);

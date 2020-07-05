@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Footer extends Component {
    
 
     render() {
         return (
-            <div class="">
+            <div class={`bg-${this.props.theme}`}>
                 
         <hr />
         
         <div className="container row card-primary m-4">
          <div class="col-md-6 p-3">
         <h5>About this App</h5>
-        <p className="bg-default card-text "> 
+        <p className={`${this.props.theme}  text-${this.props.navtheme}`}> 
         There are many variations of passages of Lorem Ipsum available,
          but the majority have suffered alteration in some form, by injected humour,
           or randomised words which don't look even slightly believable. If you are going
@@ -26,7 +27,7 @@ class Footer extends Component {
         </p>
 
         <h5>Quick Help</h5>
-        <p className="bg-default card-text"> 
+        <p className={`bg-${this.props.theme}  text-${this.props.navtheme}`}> 
         There are many variations of passages of Lorem Ipsum available,
          but the majority have suffered alteration in some form, by injected humour,
           or randomised words which don't look even slightly believable. If you are going
@@ -40,10 +41,10 @@ class Footer extends Component {
 
         <div class="col-md-6 p-3">
         <h5>Contact Us</h5>
-        <ul className="list-group">
-            <li class="list-group-item">Phone : +255 754 385 888</li>
-            <li class="list-group-item">Email : erickemmanuael@gmail.com</li>
-            <li class="list-group-item">Location : Hailesalassie 450</li>
+        <ul className={`list-group bg-${this.props.theme}  text-${this.props.navtheme}`}>
+            <li class={`list-group-item bg-${this.props.theme}  text-${this.props.navtheme}`}>Phone : +255 754 385 888</li>
+            <li class={`list-group-item bg-${this.props.theme}  text-${this.props.navtheme}`}>Email : erickemmanuael@gmail.com</li>
+            <li class={`list-group-item bg-${this.props.theme}  text-${this.props.navtheme}`}>Location : Hailesalassie 450</li>
         </ul>
 
         <div class="col-md-12 p-3 container row">
@@ -56,8 +57,8 @@ class Footer extends Component {
             </div> */}
             <div class="col-md-4">
             <Link to="/register">
-            <a class="btn btn-primary btn-md text-light m-1">Registration</a>
-
+            <a class= {`btn btn-primary btn-md m-1  text-light`}>Registration</a>
+           
             </Link>
             </div>
             {/* <div class="col-md-4">
@@ -81,10 +82,10 @@ class Footer extends Component {
                 </center>
            
             </nav>
-            <nav class="navbar navbar-light bg-primary mt-3 fixed-bottom">
+            <nav class="navbar navbar-light bg-primary mt-3 card mb-0">
                 <center class="col-md-12">
                 
-                    <span class="right-50" id="">ElearningEnhancer@2020</span>
+                    <span class= {`right-50 text-light`} id="">ElearningEnhancer@2020</span>
                 
                 </center>
            
@@ -97,5 +98,9 @@ class Footer extends Component {
 Footer.propTypes = {
 
 }
+const mapStateToProps = (state) => ({
+    theme : state.theme.theme[0],
+    navtheme : state.theme.theme[1]
+})
 
-export default Footer
+export default connect(mapStateToProps)(Footer)
