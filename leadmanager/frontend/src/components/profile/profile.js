@@ -36,15 +36,15 @@ export class Profile extends Component{
         <h5 class="section-title text-primary h1"></h5>
         <div class="row bg-white">
          
-            <div class="col-xs-12 col-sm-6 col-md-6 col-12">
-                <div class="image-flip" >
-                    <div class="mainflip flip-0">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-header">
+            <div class={`col-xs-12 col-sm-6 col-md-6 col-12 bg-${this.props.theme} text-${this.props.navtheme}`}>
+                <div class={`image-flip bg-${this.props.theme} text-${this.props.navtheme}`}>
+                    <div class={`mainflip flip-0`}>
+                        <div class={`frontside bg-${this.props.theme} text-${this.props.navtheme}`}>
+                            <div class={`card card-text bg-${this.props.theme} text-${this.props.navtheme}`}>
+                                <div class={`card-header bg-${this.props.theme} text-${this.props.navtheme}`}>
                                     <h3>App User Account</h3>
                                 </div>
-                                <div class="card-body text-center">
+                                <div class={`card-body text-center bg-${this.props.theme} text-${this.props.navtheme}`}>
                                     <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image" /></p>
                        {appuser ? 
                            <Link to="/editprofile">
@@ -62,15 +62,15 @@ export class Profile extends Component{
                                 </div>
                             </div>
                         </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
+                        <div class={`backside bg-${this.props.theme} text-${this.props.navtheme}`}>
+                            <div class={`card bg-${this.props.theme} text-${this.props.navtheme}`}>
+                                <div class={`card-body text-center mt-4 bg-${this.props.theme} text-${this.props.navtheme}`}>
                                 {appuser ? <h4 class="card-title">Username :  {appuser.username}</h4> : '' }
                                 {appuser ? <h4 class="card-title">Email Adress :  {appuser.email}</h4> : '' }
                                 <br />
-                                <center> <h4 className="card-text">Account Description</h4> </center>
-                                    <p class="card-text">This account type is the one you use to get access to our application, explore our features and configure the elearning account on the settings.</p>
-                                    <p class="card-text">It is the one you registered with in the first place, and logged in with. Keep your credentials by your self becaouse anyone with your username and password could gain access</p>
+                                <center> <h4 className={`card-text bg-${this.props.theme} text-${this.props.navtheme}`}>Account Description</h4> </center>
+                                    <p class={`card-text bg-${this.props.theme} text-${this.props.navtheme}`}>This account type is the one you use to get access to our application, explore our features and configure the elearning account on the settings.</p>
+                                    <p class={`card-text bg-${this.props.theme} text-${this.props.navtheme}`}>It is the one you registered with in the first place, and logged in with. Keep your credentials by your self becaouse anyone with your username and password could gain access</p>
      
                                             <Link to="/editprofile">
                                    <button className="btn btn-primary btn-sm"> Edit Profile</button>
@@ -82,15 +82,15 @@ export class Profile extends Component{
                 </div>
             </div>
          
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                            <div class="card-header">
+            <div class={`col-xs-12 col-sm-6 col-md-6 bg-${this.props.theme} text-${this.props.navtheme}`}>
+                <div class={`image-flip bg-${this.props.theme} text-${this.props.navtheme}`} ontouchstart="this.classList.toggle('hover');">
+                    <div class={`mainflip `}>
+                        <div class={`frontside bg-${this.props.theme} text-${this.props.navtheme}`}>
+                            <div class={`card bg-${this.props.theme} text-${this.props.navtheme}`}>
+                            <div class={`card-header bg-${this.props.theme} text-${this.props.navtheme}`}>
                                     <h3>Elearning User Account</h3>
                                 </div>
-                                <div class="card-body text-center">
+                                <div class={`card-body text-center bg-${this.props.theme} text-${this.props.navtheme}`}>
                                     <p><img class=" img-fluid" src={euser.userpictureurl} alt="card image" /></p>
                                     {euser ? 
                            <Link to="/editprofile">
@@ -107,14 +107,14 @@ export class Profile extends Component{
                             </div>
                             </div>
                         </div>
-                        <div class="backside">
-                        <div class="card">
-                                <div class="card-body text-center mt-4">
+                        <div class={`backside bg-${this.props.theme} text-${this.props.navtheme}`}>
+                        <div class={`card bg-${this.props.theme} text-${this.props.navtheme}`}>
+                                <div class={`card-body text-center mt-4 bg-${this.props.theme} text-${this.props.navtheme}`}>
                                 {euser ? <h4 class="card-title">Elearning Username :  {euser.username}</h4> : '' }
                                 {euser ? <h4 class="card-title">Elearning Fullrname :  {euser.fullname}</h4> : '' }
                                 <br />
-                                <center> <h4 className="card-text">Account Description</h4> </center>
-                                    <p class="card-text">This account type is the elearning registered account that aims t access the contents related to the courses enrolled from the eleaarning system. To
+                                <center> <h4 className={`card-text bg-${this.props.theme} text-${this.props.navtheme}`}>Account Description</h4> </center>
+                                    <p class={`card-text bg-${this.props.theme} text-${this.props.navtheme}`}>This account type is the elearning registered account that aims t access the contents related to the courses enrolled from the eleaarning system. To
                                     change any configuration about this account to match the elearning credentials  click the button below</p>
                                             <Link to="/settings">
                                    <button className="btn btn-primary btn-sm"> Edit Credentials</button>
@@ -139,7 +139,9 @@ export class Profile extends Component{
 }
 const mapStateToProps = (state) =>({
         auth : state.auth,
-        euser : state.user.users
+        euser : state.user.users,
+        theme : state.theme.theme[0],
+        navtheme : state.theme.theme[1]
     });
    
 

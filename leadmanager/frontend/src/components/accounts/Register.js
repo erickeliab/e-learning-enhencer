@@ -42,14 +42,14 @@ export class Register extends Component {
     const { username, email, password, password2 } = this.state;
     return (
       <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5">
+        <div className={`card-${this.props.theme} card-body mt-5 bg-${this.props.theme}  text-${this.props.navtheme}`}>
           <h2 className="text-center">Register</h2>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label>Username</label>
               <input
                 type="text"
-                className="form-control"
+                className={`form-control bg-${this.props.theme}  text-${this.props.navtheme}`}
                 name="username"
                 onChange={this.onChange}
                 value={username}
@@ -59,7 +59,7 @@ export class Register extends Component {
               <label>Email</label>
               <input
                 type="email"
-                className="form-control"
+                className={`form-control bg-${this.props.theme}  text-${this.props.navtheme}`}
                 name="email"
                 onChange={this.onChange}
                 value={email}
@@ -69,7 +69,7 @@ export class Register extends Component {
               <label>Password</label>
               <input
                 type="password"
-                className="form-control"
+                className={`form-control bg-${this.props.theme}  text-${this.props.navtheme}`}
                 name="password"
                 onChange={this.onChange}
                 value={password}
@@ -79,7 +79,7 @@ export class Register extends Component {
               <label>Confirm Password</label>
               <input
                 type="password"
-                className="form-control"
+                className={`form-control bg-${this.props.theme}  text-${this.props.navtheme}`}
                 name="password2"
                 onChange={this.onChange}
                 value={password2}
@@ -102,6 +102,8 @@ export class Register extends Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  theme : state.theme.theme[0],
+  navtheme : state.theme.theme[1]
 });
 
 export default connect(mapStateToProps, { register, createMessage })(Register);

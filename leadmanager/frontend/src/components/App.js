@@ -29,7 +29,7 @@ import Forums from "./forums/forumlist";
 // Alert Options
 const alertOptions = {
   timeout: 3000,
-  position: 'top center',
+  position: 'middle',
 };
 
 
@@ -54,6 +54,7 @@ class App extends Component {
              
               <div className={`bg-${this.state.theme}  text-${this.state.navtheme}`}>
               <Header parentCallback={this.callbackFunction} />
+              
               <Alerts />
                 <Switch>
                   <PrivateRoute exact path="/leads" component={Dashboard} />

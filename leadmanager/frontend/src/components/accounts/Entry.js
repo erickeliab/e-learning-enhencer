@@ -33,14 +33,14 @@ export class Entry extends Component {
     const { username, password } = this.state;
     return (
       <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5">
+        <div className={`card-${this.props.theme} card-body mt-5 bg-${this.props.theme}  text-${this.props.navtheme}`}>
           <h2 className="text-center">Provide Elearning Credentials</h2>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label>Username</label>
               <input
                 type="text"
-                className="form-control"
+                className={`form-control bg-${this.props.theme}  text-${this.props.navtheme}`}
                 name="username"
                 onChange={this.onChange}
                 value={username}
@@ -51,7 +51,7 @@ export class Entry extends Component {
               <label>Password</label>
               <input
                 type="password"
-                className="form-control"
+                className={`form-control bg-${this.props.theme}  text-${this.props.navtheme}`}
                 name="password"
                 onChange={this.onChange}
                 value={password}
@@ -75,7 +75,9 @@ export class Entry extends Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  tokenfetched : state.user.token_value
+  tokenfetched : state.user.token_value,
+  theme : state.theme.theme[0],
+  navtheme : state.theme.theme[1]
 });
 
 export default connect(mapStateToProps, { login, getUser,fetchToken })(Entry);

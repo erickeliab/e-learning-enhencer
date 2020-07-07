@@ -1,114 +1,203 @@
 import React, { Component, Fragment } from 'react'
 import Hero from '../layout/Hero';
 import {connect } from 'react-redux';
-import {Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { getSettings, deleteSetting, addSettings ,updateSetting} from '../../actions/settings';
 
 
 export class Settings extends Component {
 
-    render(){
+  state = {
+    
+    student: this.props.euser.userid,
+    updatetime: '',
+    phone: '',
+    updatebysms:true,
+    updatebyemail:false
+  };
 
-        const euser = this.props.euser[0];
+  currentSetting = {
+    student: this.props.euser.userid,
+    updatetime: this.props.settings ? this.props.settings.updatetime : '',
+    phone: this.props.settings ? this.props.settings.phone : '',
+    updatebysms:true,
+    updatebyemail:false
+  }
+
+  static propTypes = {
+    
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    
+    this.props.addSettings(this.state);
+  };
+
+  onUpdate = (e) => {
+    e.preventDefault();
+    
+    this.props.updateSetting(this.props.settings.id,this.state, this.currentSetting);
+    this.props.getSettings()
+  };
+
+  onDelete = (e) => {
+    e.preventDefault();
+    
+    this.props.deleteSetting(this.props.settings.id)
+
+  };
+
+
+  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
+    componentDidMount(){
+      this.props.getSettings()
+    }
+
+
+
+    render(){
+        
+        const euser = this.props.euser;
         return <Fragment>
             <Hero />
             
             <div class="container row">
-              <div class="col-xs-12 col-sm-6 col-md-6 col-12">
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                            <div class="card-header">
-                                    <h3>Elearning User Account</h3>
-                                </div>
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_06.jpg" alt="card image" /></p>
-                                    {euser ? 
-                           <Link to="/editprofile">
-                           <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-md"><i class="fa fa-user"></i></a>    <button className="btn btn-primary btn-sm"> Accessed</button>
-                           </Link>
-                       : 
-                       <Link to="/editprofile">
-                        <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-md"><i class="fa fa-user"></i></a>    <button className="btn btn-primary btn-sm">Not Accessed </button>
-                        </Link>} 
+            <div className="col-xs-12 col-sm-6 col-md-6 col-12">
+            { this.props.settings ?
+              
+              <div className={`card-body card-${this.props.theme}  text-${this.props.navtheme}`}>
+            <h2 className="text-center">Current SMS Settings</h2>
+            <form onSubmit={this.onDelete}>
+              <div className="form-group">
+                <label>Phone Number</label>
+                { this.props.settings ?
+                <h4 className={` border-${this.props.theme}  text-${this.props.navtheme}`}>{this.props.settings.phone}</h4>
+                : 
+                <h4 className={` border-${this.props.theme}  text-${this.props.navtheme}`}>Not set</h4>
+                }
+    
+              </div>
+              <div className="form-group">
+                <label>Check time (min)</label>
+                { this.props.settings ?
+                <h4 className={` border-${this.props.theme}  text-${this.props.navtheme}`}>{this.props.settings.updatetime}</h4>
+                : 
+                <h4 className={` border-${this.props.theme}  text-${this.props.navtheme}`}>Not set</h4>
+                }
+                  </div>
+             
+              <div className="form-group">
+                
+              { this.props.settings ?
+                <button className="btn btn-danger" type="submit">
+                  Delete this Settings
+                </button>                : 
+          null
+    }
+               
+              </div>
+             
+          </form>
+          </div>
+              : 
 
-                        <br /><br />
-                        {euser ? <h4 class="card-title text-primary">Elearning Username :  {euser.fullname}</h4> : '' }
-                        {euser ? <h4 class="card-title">Email Adress : {euser.email}</h4> : '' }
-                            </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                        <div class="card">
-                                <div class="card-body text-center mt-4">
-                                {euser ? <h4 class="card-title">Elearning Name :  {euser.fullname}</h4> : '' }
-                                {euser ? <h4 class="card-title">Email Adress :  {euser.email}</h4> : '' }
-                                <br />
-                                <center> <h4 className="card-text">Account Description</h4> </center>
-                                    <p class="card-text">This account type is the elearning registered account that aims t access the contents related to the courses enrolled from the eleaarning system. To
-                                    change any configuration about this account to match the elearning credentials  click the button below</p>
-                                            <Link to="/profile">
-                                   <button className="btn btn-primary btn-sm">Back to profiles</button>
-                                </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+           <div className={`card-body card-${this.props.theme}  text-${this.props.navtheme}`}>
+            <h2 className="text-center">Current SMS Settings</h2>
+            <form onSubmit={this.onDelete}>
+              <div className="form-group">
+                <label>Phone Number</label>
+                { this.props.updatedSettings ?
+                <h4 className={` border-${this.props.theme}  text-${this.props.navtheme}`}>{this.props.updatedSettings.phone}</h4>
+                : 
+                <h4 className={` border-${this.props.theme}  text-${this.props.navtheme}`}>Not set</h4>
+                }
+    
+              </div>
+              <div className="form-group">
+                <label>Check time (min)</label>
+                { this.props.settings ?
+                <h4 className={` border-${this.props.theme}  text-${this.props.navtheme}`}>{this.props.updatedSettings.updatetime}</h4>
+                : 
+                <h4 className={` border-${this.props.theme}  text-${this.props.navtheme}`}>Not set</h4>
+                }
+                  </div>
+             
+              <div className="form-group">
+                
+              { this.props.settings ?
+                <button className="btn btn-danger" type="submit">
+                  Delete this Settings
+                </button>    : 
+          null
+    }
+               
+              </div>
+             
+          </form>
+          </div>
+    }
+
+          
+        </div>
 
               <div className="col-xs-12 col-sm-6 col-md-6 col-12">
-          <div className="card card-body">
-            <h2 className="text-center">Edit Your Profile</h2>
-            <form >
+              {euser ? 
+
+            
+          <div className={`card-body card-${this.props.theme}  text-${this.props.navtheme}`}>
+            <h2 className="text-center">Edit SMS Settings</h2>
+            <form onSubmit={this.props.settings ? this.onUpdate : this.onSubmit }>
               <div className="form-group">
-                <label>Username</label>
+                <label>Phone Number</label>
                 <input
                   type="text"
                   className="form-control"
-                  name="username"
-                 
-                  value=''
+                  name="phone"
+                  onChange={this.onChange}
+                  value={this.state.phone}
                 />
               </div>
               <div className="form-group">
-                <label>Email</label>
+                <label>Check time (min)</label>
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
-                  name="email"
-                 
-                  value=''
+                  name="updatetime"
+                  onChange={this.onChange}
+                  value={this.state.updatetime}
                 />
               </div>
-              <div className="form-group">
-                <label>Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  
-                  value=''
-                />
-              </div>
-              <div className="form-group">
-                <label>Confirm Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password2"
-                  
-                  value=''
-                />
-              </div>
-              <div className="form-group">
+              {euser ? 
+               <input
+               type="hidden"
+               className="form-control"
+               name="student"
+               onChange={this.onChange}
+               value={euser.userid}
+             /> : null
+
+            }
+             
+              
+              {this.props.settings ? 
+                <div className="form-group">
                 <button type="submit" className="btn btn-primary">
                   Update
                 </button>
+              </div> :
+              <div className="form-group">
+                <button type="submit" className="btn btn-primary">
+                  Create
+                </button>
               </div>
-             
+            }
             </form>
           </div>
+              : null
+          }
         </div>
         </div>
 
@@ -121,9 +210,14 @@ export class Settings extends Component {
     }
 }
 const mapStateToProps = (state) => ({
-    euser : state.user.users
+    euser : state.user.users,
+    theme : state.theme.theme[0],
+    navtheme : state.theme.theme[1],
+    settings : state.settings.settings[state.settings.settings.length - 1],
+    updatedSettings : state.settings.updateSetting
+    
 });
         
     
 
-export default connect(mapStateToProps)(Settings);
+export default connect(mapStateToProps,{getSettings, deleteSetting, addSettings, updateSetting})(Settings);

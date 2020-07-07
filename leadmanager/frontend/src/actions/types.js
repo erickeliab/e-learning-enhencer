@@ -21,3 +21,7 @@ export const GET_COURSES = 'GET_COURSES';
 export const GET_STUDENT = 'GET_STUDENT'; 
 export const GET_FORUMS = 'GET_FORUMS';
 export const SET_THEME = 'SET_THEME';
+export const GET_SETTINGS = 'GET_SETTINGS';
+export const CREATE_SETTINGS = 'CREATE_SETTINGS';
+export const DELETE_SETTINGS = 'DELETE_SETTINGS';
+export const UPDATE_SETTINGS = 'UPDATE_SETTINGS';

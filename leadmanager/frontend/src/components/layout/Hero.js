@@ -19,8 +19,8 @@ export  class Hero extends Component {
           <Fragment>
             <Lead />
 
-            <div className="card bg-light  d-block h-10">
-      <div class="card-body">
+            <div className={`card bg-${this.props.theme} d-block h-10 bg-  text-${this.props.navtheme}`}>
+           <div class="card-body">
             <h4>Dashboard</h4>
             <div class="row">
               <div class="col-5 col-sm-3">
@@ -29,7 +29,7 @@ export  class Hero extends Component {
                   <a class="nav-link" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab" aria-controls="vert-tabs-home" aria-selected="false">Profile</a>
                   </Link>
                   <Link to="/courses">
-                  <a class="nav-link active" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="true">Enrolled Courses</a>
+                  <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="true">Enrolled Courses</a>
 
 
                   </Link>
@@ -43,23 +43,23 @@ export  class Hero extends Component {
 
                    <Link to="/about">
 
-                  <a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">Help</a>
+                  <a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">Guide</a>
 
                   </Link>
                 </div>
               </div>
-              <div class="container bg-white row col-7 col-sm-9  rounded-3 p-3">
-             <div className="container bg-white ">
+              <div class={`container  row col-7 col-sm-9  rounded-3 p-3 bg-${this.props.theme}  text-${this.props.navtheme}`}>
+             <div className={`container bg-${this.props.theme}  text-${this.props.navtheme}`} >
 
              <center>
              
             </center>
           
-            <div class="card card-primary">
+            <div class={`card card-primary d-block h-10 bg-${this.props.theme}  text-${this.props.navtheme}`}>
               <div class="card-header">
                 <h3 class="card-title">Announcement</h3>
               </div>
-              <div class="card-body">
+              <div class={`card-body bg-${this.props.theme}  text-${this.props.navtheme}`}>
                 <p>No Any announcement</p>
                 </div>
             </div>
@@ -82,7 +82,9 @@ export  class Hero extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  tokenfetched : state.user.token_value
+  tokenfetched : state.user.token_value,
+  theme : state.theme.theme[0],
+  navtheme : state.theme.theme[1]
 });
 
 export default connect(mapStateToProps, { getPosts, getDiscussions})(Hero);

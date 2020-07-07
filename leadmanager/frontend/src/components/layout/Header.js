@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import  { changeTheme } from '../../actions/theme';
+import { LInk } from 'react-router-dom';
 
 export class Header extends Component {
   static propTypes = {
@@ -35,9 +36,13 @@ export class Header extends Component {
 
 
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+      <Link to="/profile">
         <span className="navbar-text mr-3">
-          <strong>{user ? ` ${user.username}` : ''}</strong>
+         
+          <strong class={`text-${this.props.navtheme}`}> <i class="fa fa-user" aria-hidden="true"></i> {user ? ` ${user.username}` : ''}</strong>
+
         </span>
+        </Link>
         <li className="nav-item">
           <button onClick={this.props.logout} className="nav-link btn btn-primary btn-md text-light p-2">
             Logout
@@ -72,12 +77,9 @@ export class Header extends Component {
     return (
 
       <Fragment>
-         {/* <nav className="col-12 bg-primary sticky-top">
-           <small></small>
-       mzumbe university e-learning enhancer application
-      </nav> */}
-      <nav className={`navbar navbar-expand-lg navbar-primary bg-${this.props.navtheme} sticky-top`}>
-      <a class="navbar-brand" href="#">E-learning Enhencer</a>
+      <div  className={`sticky-top bg-${this.props.theme} mb-0`}>
+      <nav className={`navbar navbar-expand-lg navbar-primary bg-${this.props.theme} mb-0`}>
+      <a class="navbar-brand" href="#">E-learning Enhancer</a>
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <li className="nav-item theme" onClick={this.changeTheme}>
        - <i class="fa fa-sun" aria-hidden="true"></i> - 
@@ -87,10 +89,10 @@ export class Header extends Component {
 
         {isAuthenticated ? authLinks : guestLinks}
        
-       
+        
       </nav>
-
-
+      <hr mt-0 className="border-default" />
+      </div>
      </Fragment>
     );
   }

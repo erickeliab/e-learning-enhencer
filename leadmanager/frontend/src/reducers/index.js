@@ -9,6 +9,7 @@ import user from './user.js'
 import auth from './auth';
 import forums from './forums';
 import theme from './theme';
+import settings from './settings';
 
 export default combineReducers({
   leads,
@@ -20,5 +21,6 @@ export default combineReducers({
   user,
   courses,
   forums,
-  theme
+  theme,
+  settings,
 });

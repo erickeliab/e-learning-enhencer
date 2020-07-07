@@ -24,24 +24,21 @@ export class Courselist extends Component {
         return (
             <div className="container">
               
-<div class="container">
-        <div class="row">
+<div class={`container bg-${this.props.theme} text-${this.props.navtheme}`}>
+        <div class={`row bg-${this.props.theme} text-${this.props.navtheme}`}>
 {courses ? courses.map((course) => (
-    <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-    <div class="card card-inverse card-info">
-        {/* <img class="card-img-top" src="https://picsum.photos/200/150/?random" /> */}
+    <div class={`col-sm-6 col-md-4 col-lg-3 mt-4 bg-${this.props.theme} text-${this.props.navtheme}`}>
+    <div class={`card border-secondary bg-${this.props.theme} text-${this.props.navtheme}`}>
         <div class="card-block">
-            {/* <figure class="profile profile-inline">
-                <img src="https://picsum.photos/200/150/?random" class="profile-avatar" alt="" />
-            </figure> */}
-            <h4 class="card-title">{course.shortname}</h4>
-            <div class="card-text">
+          
+            <h4 class={`card-title bg-${this.props.theme} text-${this.props.navtheme}`}>{course.shortname}</h4>
+            <div class={`card-text bg-${this.props.theme} text-${this.props.navtheme}`}>
             {course.fullname}
             </div>
         </div>
-        <div class="card-footer">
+        <div class={`card-footer border-secondary text-${this.props.navtheme}`}>
             <Link to={"/courses/"+course.id}>
-            <button class="btn btn-info btn-sm">Forums</button>
+            <button class="btn btn-primary btn-sm">Forums</button>
             </Link>
             
         </div>
@@ -59,7 +56,9 @@ export class Courselist extends Component {
 const mapStateToProps = (state) => ({
 courses : state.courses,
 fetchedtoken: state.user.users.token_value,
-userid : state.user.users.userid
+userid : state.user.users.userid,
+theme : state.theme.theme[0],
+navtheme : state.theme.theme[1]
 });
 
 export default connect(mapStateToProps, {getCourses})(Courselist)

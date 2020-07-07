@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'frontend',
     'knox',
     'accounts',
+    'settings',
+    'discussions',
 ]
 
 REST_FRAMEWORK = {
@@ -85,7 +87,7 @@ WSGI_APPLICATION = 'leadmanager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'final',
+        'NAME': 'enhancer',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',

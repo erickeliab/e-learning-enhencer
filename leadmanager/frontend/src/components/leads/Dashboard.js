@@ -6,13 +6,13 @@ import { Redirect } from "react-router-dom";
 
 export class Dashboard extends Component {
   render() { 
-    if (this.props.isAuthenticated) {
-      return <Redirect to="/courses" />;
-    }
+    // if (this.props.isAuthenticated) {
+    //   return <Redirect to="/courses" />;
+    // }
     return(
     <Fragment>
      
-      <div className="container">
+      <div className="container m-4 ">
         <h1>Home</h1>
       </div>
     </Fragment>

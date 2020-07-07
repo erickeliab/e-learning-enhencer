@@ -8,7 +8,7 @@ export const About = () => {
     return <Fragment>
         <Hero />
         <div className="container">
-        <h1>Help</h1>
+        <h1>Guide</h1>
        <br/>
         <h5>How to use</h5>
         <p>
