@@ -7,7 +7,7 @@ export class Post extends Component{
     msg = this.props.pst.message;
 
     render(){
-        console.log(this.props.pst.message.toString());
+        // console.log(this.props.pst.message.toString());
         return <Fragment>
           
           <div dangerouslySetInnerHTML={{__html: 

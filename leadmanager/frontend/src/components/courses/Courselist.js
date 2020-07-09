@@ -14,7 +14,7 @@ export class Courselist extends Component {
 
   
     render() {
-        this.props.userid ? this.props.getCourses(this.props.fetchedtoken,this.props.userid ? this.props.userid:0) : console.log('none');
+        this.props.userid ? this.props.getCourses(this.props.fetchedtoken,this.props.userid ? this.props.userid:0) : null;
 
         const {courses} = this.props.courses;
 

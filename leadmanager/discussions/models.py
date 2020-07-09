@@ -5,5 +5,5 @@ class Discussion(models.Model):
     disc_id = models.CharField(max_length=4)
     totalposts = models.CharField(max_length=4)
     owner = models.ForeignKey(
-        User, related_name="discussion", on_delete=models.CASCADE, null=True)
+        User, related_name="discussions", on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

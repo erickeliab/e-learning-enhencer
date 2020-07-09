@@ -30,7 +30,7 @@ export const getUser = (tokene) => (dispatch, getState) => {
         }
           return config;
         };
-        console.log(tokene);
+        // console.log(tokene);
         
     let url = `http://localhost/moodle/webservice/restful/server.php/core_webservice_get_site_info`;
   axios
@@ -40,7 +40,7 @@ export const getUser = (tokene) => (dispatch, getState) => {
         type: GET_USER,
         payload: res.data,
       });
-      console.log(res.data);
+      // console.log(res.data);
       
     })
     .catch((err) => console.log('failed to get users token from e-learning'));

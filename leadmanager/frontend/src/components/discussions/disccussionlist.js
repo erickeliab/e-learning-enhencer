@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Hero from '../layout/Hero';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-import { getDiscussions } from '../../actions/discussions';
+import { getDiscussions, getSavedDisscusions } from '../../actions/discussions';
 import { getPosts } from '../../actions/posts';
 import { getUser, fetchToken } from '../../actions/user';
 import Post from '../../components/posts/posts';
@@ -26,7 +26,7 @@ export  class DiscussionList extends Component {
 
     componentDidMount(){
        // this.props.getDiscussions(this.props.match.params.id);
-        
+        this.props.getSavedDisscusions();
     }
 
     render = () => {
@@ -94,4 +94,4 @@ const mapStateToProps = (state) => ({
     posts : state.posts.posts.posts,
 })
 
-export default connect(mapStateToProps,{getDiscussions,fetchToken, getPosts})(DiscussionList);
+export default connect(mapStateToProps,{getDiscussions,fetchToken, getPosts, getSavedDisscusions})(DiscussionList);
