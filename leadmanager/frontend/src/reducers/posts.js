@@ -10,6 +10,7 @@ const initialState = {
         return {
           ...state,
           posts: action.payload,
+          // posts: [...state.posts,action.payload.posts],
         };
       
       default:

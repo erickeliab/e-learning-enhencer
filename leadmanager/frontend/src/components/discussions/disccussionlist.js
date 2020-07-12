@@ -6,7 +6,7 @@ import { getDiscussions, getSavedDisscusions } from '../../actions/discussions';
 import { getPosts } from '../../actions/posts';
 import { getUser, fetchToken } from '../../actions/user';
 import Post from '../../components/posts/posts';
-import { Link } from 'react-router-dom';
+import { Link , Redirect} from 'react-router-dom';
 
 
 export  class DiscussionList extends Component {
@@ -20,21 +20,49 @@ export  class DiscussionList extends Component {
 
     componentWillMount(){
         //this.props.fetchToken('blockresna','Mu12345678.');
-        
+        // this.props.getDiscussions(this.props.match.params.id);
+        // this.props.discussions.discussions ? this.props.discussions.discussions.map((discussion) => (
+                    
+        //    this.props.getPosts(discussion.id)
+      
+        //   )):  <Redirect to={`/forums/${this.routey}`} />;
       }
 
 
     componentDidMount(){
        // this.props.getDiscussions(this.props.match.params.id);
+
+       var ids  = [];
         this.props.getSavedDisscusions();
+         this.props.getDiscussions(this.props.match.params.id);
+
+        // this.props.discussions.discussions ? this.props.discussions.discussions.map((discussion) => (
+                    
+        //    this.props.getPosts(discussion.id)
+      
+        //   )):  this.fetchposts();
+       // this.fetchposts()
     }
 
+    fetchposts = () => {
+      this.props.discussions.discussions ? this.props.discussions.discussions.map((discussion) => (
+                    
+        this.props.getPosts(discussion.id)
+        
+        )): null
+    }
+    routey = this.props.match.params.id;
     render = () => {
 
         //console.log( this.props.posts.filter((post) => post.discussionid == 1));
-        this.props.getDiscussions(this.props.match.params.id);
+       
+        // if (!this.props.discussions.discussions) {
+        //   return <Redirect to={`/forums/${this.routey}`} />;
+        // }
+       
         return <Fragment>
             <Hero />
+            
             <div className="container row col-md-12">
            
                 <div className="col-md-2 ">
@@ -42,7 +70,7 @@ export  class DiscussionList extends Component {
                 <ul class="list-group mb-4">
                 <li class="list-group-item active">Discussions</li>
                 {this.props.discussions.discussions ? this.props.discussions.discussions.map((discussion) => (
-
+                    
                 <li class="list-group-item">{discussion.name}</li>
                 )): null}
                
@@ -91,7 +119,7 @@ export  class DiscussionList extends Component {
 
 const mapStateToProps = (state) => ({
     discussions: state.discussions.discussions,
-    posts : state.posts.posts.posts,
+    //posts : state.posts.posts.posts,
 })
 
 export default connect(mapStateToProps,{getDiscussions,fetchToken, getPosts, getSavedDisscusions})(DiscussionList);

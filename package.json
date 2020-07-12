@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.1",
+    "file-loader": "^6.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-alert": "^7.0.0",
@@ -22,7 +23,8 @@
     "react-transition-group": "^2.9.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "url-loader": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

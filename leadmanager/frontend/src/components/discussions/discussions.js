@@ -117,7 +117,7 @@ export  class Discussions extends Component {
                 
               </div>
               <div class="card-body">
-              {this.props.posts ? this.props.posts.map((pst) => (
+              {this.props.posts ? this.props.posts.filter((pt) => pt.discussionid == this.props.match.params.id).map((pst) => (
 
                 <div class="callout callout-success">
                   <h5>##</h5>

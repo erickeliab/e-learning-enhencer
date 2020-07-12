@@ -91,7 +91,7 @@ export class Header extends Component {
        
         
       </nav>
-      <hr mt-0 className="border-default" />
+     
       </div>
      </Fragment>
     );

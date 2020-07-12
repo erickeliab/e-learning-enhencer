@@ -8,9 +8,9 @@ class Footer extends Component {
 
     render() {
         return (
-            <div class={`bg-${this.props.theme}`}>
+            <div class={`bg-${this.props.theme} mt-0` }>
                 
-        <hr className={`  border-default`}/>
+        <hr className={`  border-default mt-0`}/>
         
         <div className="container row card-primary m-4">
          <div class="col-md-6 p-3">
