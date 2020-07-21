@@ -11,6 +11,7 @@ export const getDiscussions = (id) => (dispatch, getState) => {
   axios
     .post(url, discussions_row(id), tokenConfigElearning(getState))
     .then((res) => {
+     
       dispatch({
         type: GET_DISCUSSIONS,
         payload: res.data,

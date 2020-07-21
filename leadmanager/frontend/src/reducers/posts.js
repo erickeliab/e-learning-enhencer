@@ -9,8 +9,8 @@ const initialState = {
       case GET_POSTS:
         return {
           ...state,
-          posts: action.payload,
-          // posts: [...state.posts,action.payload.posts],
+         // posts: action.payload,
+           posts: [...state.posts.filter((pst) => pst != null),action.payload.posts],
         };
       
       default:

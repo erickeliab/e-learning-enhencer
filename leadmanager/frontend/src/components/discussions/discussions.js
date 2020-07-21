@@ -17,15 +17,25 @@ export  class Discussions extends Component {
       };
       
 
-    componentWillMount(){
-        //this.props.fetchToken('blockresna','Mu12345678.');
+    // componentWillMount(){
+    //     //this.props.fetchToken('blockresna','Mu12345678.');
         
-      }
+    //   }
 
 
     componentDidMount(){
        // this.props.getDiscussions(this.props.match.params.id);
-       this.props.getPosts(this.props.match.params.id);
+      // this.props.getPosts(this.props.match.params.id);
+
+
+      if (this.props.discussions && this.props.saved && this.props.posts){
+        //  const { discussion } = this.props.discussions ? this.props.discussions.filter((post) => post.discussionid == 1);
+        
+        const discussionInArray = this.props.discussions.discussions.filter((disc) => disc.id == this.props.match.params.id);
+        const discussion = discussionInArray[0];
+        this.discussionIndex = this.props.discussions.discussions.indexOf(discussion);
+
+      }
     }
 
     compareStates = (original,cached) => {
@@ -59,9 +69,7 @@ export  class Discussions extends Component {
       }
          
           
-      
-     
-      
+  
     }
 
 
@@ -69,14 +77,17 @@ export  class Discussions extends Component {
       if (this.props.discussions && this.props.saved && this.props.posts){
         //  const { discussion } = this.props.discussions ? this.props.discussions.filter((post) => post.discussionid == 1);
         
-        const discussion = this.props.discussions.discussions.filter((disc) => disc.id == 1);
-        // console.log(discussion);
+        const discussionInArray = this.props.discussions.discussions.filter((disc) => disc.id == this.props.match.params.id);
+        const discussion = discussionInArray[0];
+        const discussionIndex = this.props.discussions.discussions.indexOf(discussion);
+
+       //  console.log(this.props.posts[discussionIndex]);
         
-        if (this.props.posts && this.props.saved) {
+        if (discussionIndex && this.props.posts[discussionIndex] && this.props.saved) {
           
           let og = {
             disc_id : this.props.match.params.id,
-            totalposts : this.props.posts.length
+            totalposts : this.props.posts[discussionIndex].length
           }
 
 
@@ -117,7 +128,7 @@ export  class Discussions extends Component {
                 
               </div>
               <div class="card-body">
-              {this.props.posts ? this.props.posts.filter((pt) => pt.discussionid == this.props.match.params.id).map((pst) => (
+              {this.props.posts[this.discussionIndex] ? this.props.posts[this.discussionIndex].filter((pt) => pt.discussionid == this.props.match.params.id).map((pst) => (
 
                 <div class="callout callout-success">
                   <h5>##</h5>
@@ -140,7 +151,7 @@ export  class Discussions extends Component {
 
 const mapStateToProps = (state) => ({
     discussions: state.discussions.discussions,
-    posts : state.posts.posts.posts,
+    posts : state.posts.posts,
     saved : state.discussions.savedDiscussions
 })
 

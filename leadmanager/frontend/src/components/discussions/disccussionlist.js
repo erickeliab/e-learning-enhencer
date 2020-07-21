@@ -59,6 +59,8 @@ export  class DiscussionList extends Component {
         // if (!this.props.discussions.discussions) {
         //   return <Redirect to={`/forums/${this.routey}`} />;
         // }
+
+        this.fetchposts();
        
         return <Fragment>
             <Hero />
