@@ -10,6 +10,8 @@ django = "*"
 djangorestframework = "*"
 django-rest-knox = "*"
 psycopg2 = "*"
+apscheduler = "*"
+requests = "*"
 
 [requires]
 python_version = "3.8"

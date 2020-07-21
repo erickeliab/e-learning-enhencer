@@ -28,6 +28,16 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+TWILIO_ACCOUNT_SID = "ACe4f325b546a9093b95b3c32616d7510f"
+TWILIO_AUTH_TOKEN = "7d70b15e9db16ab8025cb9e91bec0a8d"
+TWILIO_NUMBER = "+12056724843"
+SMS_BROADCAST_TO_NUMBERS = [ 
+    "+255734064197", # use the format +19735551234
+    "", 
+    "", 
+]
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +54,7 @@ INSTALLED_APPS = [
     'accounts',
     'settings',
     'discussions',
+    'broadcast'
 ]
 
 REST_FRAMEWORK = {
