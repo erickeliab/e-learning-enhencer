@@ -47,19 +47,19 @@ This will contain the account information neccessary for the partcular user to l
 
 ### Students
 This table will contain the accounts settings
-    0.  settings_id (PK) : STRING
-    1.  user_id
-    2.  updatetime
-    3.  phone
-    4.  email
-    5.  updatebysms
-    6.  updatebyemail
-    7.  account_id (FK)
+0.  settings_id (PK) : STRING
+1.  user_id
+2.  updatetime
+3.  phone
+4.  email
+5.  updatebysms
+6.  updatebyemail
+7.  account_id (FK)
 
 
 ### Discussions
 This table will involve data about the users discussion
-    1.id
-    2.totalposts
-    3.account_id (FK)
+1.id
+2.totalposts
+3.account_id (FK)
     
