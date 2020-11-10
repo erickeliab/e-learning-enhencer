@@ -59,7 +59,7 @@ This table will contain the accounts settings
 
 ### Discussions
 This table will involve data about the users discussion
-1.id
-2.totalposts
-3.account_id (FK)
+1.  id
+2.  totalposts
+3.  account_id (FK)
     
