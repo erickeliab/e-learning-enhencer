@@ -40,10 +40,10 @@ The architecture is abit tricky since the react pwa will be sending requests to 
 
 ### Accounts
 This will contain the account information neccessary for the partcular user to log into the application.It will contain
-    0.  account_id (PK) : STRING
-    1.  Username : STRING
-    2.  Password : (STRING)
-    3.  Email : (STRING)
+0.  account_id (PK) : STRING
+1.  Username : STRING
+2.  Password : (STRING)
+3.  Email : (STRING)
 
 ### Students
 This table will contain the accounts settings
